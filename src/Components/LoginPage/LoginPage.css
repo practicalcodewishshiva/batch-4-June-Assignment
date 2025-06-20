@@ -1,0 +1,36 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 209px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.login-button {
+  margin-top: 20px;
+  padding: 5px;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 3px;
+  color: white;
+}
+
+/* className .container */
+
+
+/* events */
+
+
+/* 100% 
+
+onChange
+onClick */
