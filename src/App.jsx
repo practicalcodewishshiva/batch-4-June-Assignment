@@ -1,83 +1,141 @@
-import { useState } from "react";
+import { Component, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-import LoginPage from './Components/LoginPage/LoginPage';
+import LoginPage from "./Components/LoginPage/LoginPage";
 import SignUpPage from "./Components/SignUpPage/SignUpPage";
-
-
-
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import DashBoard from "./Components/DashBoard/DashBoard";
+import Positions from "./Components/Positions/Positions";
+import Bids from "./Components/Bids/Bids";
+import Funds from "./Components/Funds/Funds";
+import Holdings from "./Components/Holdings/Holdings";
+import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes";
+import { AuthProvider } from "./Components/AuthProvider/AuthProvider";
+import Counter from "./Components/Counter/Counter";
 
 function App() {
   const [count, setCount] = useState(0);
+  const location = useLocation();
+
+  function handleLogoutlogOut() {
+  
+    localStorage.removeItem("access_token");
+  }
 
   return (
     <>
+      {location.pathname === "/" ? null : (
+        <div>
+          <ul
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "50px",
+              listStyle: "none",
+            }}
+          >
+            <li>
+              <Link to="/dashboard">DashBoard</Link>
+            </li>
+            <li>
+              <Link to="/funds">Orders</Link>
+            </li>
+            <li>
+              <Link to="/holdings">Holdings</Link>
+            </li>
+            <li>
+              <Link to="/positions">Positions</Link>
+            </li>
+            <li>
+              <Link to="/bids">Bids</Link>
+            </li>
+            <li>
+              <Link to="/funds">Funds</Link>
+            </li>
 
-   <LoginPage/>
-    
-   <SignUpPage/>
-     
-      {/* Dashbaord
-      <div>Hi, Siva</div>
-      equity 50.4 Margin available Margins used 0 Opening balance 450.4 Console
-      logo View statement commodity 0 Margin available Margins used 0 Opening
-      balance 0 Console logo View statement Holdings (26) 35.31k +8.90% P&L
-      Current value 4.32L Investment 3.97L ₹4,32,164.50 Current valueInvestment
-      valueP&L
+            <li onClick={handleLogoutlogOut}> Log Out </li>
+          </ul>
+        </div>
+      )}
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
 
-       Market overview
-Jul 24
-Oct 24
-Jan 25
-Apr 25
-22497.9    11 Mar 2025
-NIFTY 50 */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoutes>
+                <DashBoard />
+              </ProtectedRoutes>
+            }
+          />
 
+          <Route
+            path="/holdings"
+            element={
+              <ProtectedRoutes>
+                <Holdings />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/positions"
+            element={
+              <ProtectedRoutes>
+                <Positions />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoutes>
+                <Bids />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/funds"
+            element={
+              <ProtectedRoutes>
+                <Funds />
+              </ProtectedRoutes>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
 
 export default App;
-// babel.
-
-//  {
-//         type:"div",
-
-//       },{
-//         type:"div",
-//         props:"flex-container",
-//         children:[{type:"input"}]
-//       }
 
 
 
 
+// Login Component
 
-// function order(){
-//   return (
 
-//     Hi, Siva
-//  equity
-// 450.4
-// Margin available
-// Margins used 0
-// Opening balance 450.4
-// Console logo View statement
-//  commodity
-// 0
-// Margin available
-// Margins used 0
-// Opening balance 0
-// Console logo View statement
-//  Holdings (26)
-// 35.31k +8.90%
-// P&L
-// Current value 4.32L
-// Investment 3.97L
-// ₹4,32,164.50
-// Current valueInvestment valueP&L
+// username.    shiva
 
-//   )
-// }
+// password.    kumar
+
+
+// LoginSlice 
+
+// global data Login componnet 
+
+// Singup Component
+
+
+// SignupSlice
+
+// singup data ikkada create 
