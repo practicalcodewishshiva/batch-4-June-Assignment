@@ -12,10 +12,6 @@ import {
 
 function LoginPage({ count }) {
   const navigate = useNavigate();
-  // const [userName, setUserName] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // global userName through redux toolkit
 
   // useSelector
 
@@ -36,16 +32,16 @@ function LoginPage({ count }) {
 
   async function handleLogin() {
     try {
-      // const url = await axios.post(
-      //   "https://api.escuelajs.co/api/v1/auth/login",
+      const url = await axios.post(
+        "https://api.escuelajs.co/api/v1/auth/login",
 
-      //   {
-      //     email: userName,
-      //     password: password,
-      //   }
-      // );
+        {
+          email: userName,
+          password: password,
+        }
+      );
 
-      // const Response = await url.data.access_token;
+      const Response = await url.data.access_token;
       // key     value
 
       if (userName === "shiva" && password === "12345") {
