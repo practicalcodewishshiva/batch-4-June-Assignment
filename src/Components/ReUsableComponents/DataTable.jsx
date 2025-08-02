@@ -33,7 +33,7 @@ export default function DataTable(receiveDataHere) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {receiveDataHere.holdingData.map((row) => (
+          {receiveDataHere.holdingData && receiveDataHere.holdingData.map((row) => (
             <TableRow
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

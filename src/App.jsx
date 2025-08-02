@@ -20,6 +20,7 @@ import Holdings from "./Components/Holdings/Holdings";
 import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes";
 import { AuthProvider } from "./Components/AuthProvider/AuthProvider";
 import Counter from "./Components/Counter/Counter";
+import { LineChart } from "./Components/Charts/LineChart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -67,7 +68,7 @@ function App() {
       )}
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<LineChart />} />
 
           <Route
             path="/dashboard"
